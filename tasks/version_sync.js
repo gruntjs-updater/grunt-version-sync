@@ -60,7 +60,7 @@ module.exports = function (grunt) {
 
 
         version = sourceData.version;
-        grunt.log.writeln('Using version number ' + version + ' from ' + targetFileName);
+        grunt.log.writeln('Using version number ' + version + ' from ' + sourceFileName);
 
         // Iterate over all specified file groups.
         this.data.targets.forEach(function (f) {
@@ -71,7 +71,7 @@ module.exports = function (grunt) {
                 targetData.version = version;
 
                 grunt.file.write(targetFileName, stringifyObject(targetData, targetFileType));
-                grunt.log.writeln('File "' + f.dest + '" created.');
+                grunt.log.writeln('Updated ' + targetFileName);
 
             }
         });
