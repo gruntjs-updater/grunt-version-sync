@@ -1,6 +1,7 @@
 # grunt-version-sync
 
-> Keeps version numbers in sync between files
+> Keeps version numbers in sync between files. Currently works with json & yaml files
+(e.g. package.json, _config.yml), and looks for a 'version' property on the top level.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.2`
@@ -25,65 +26,21 @@ In your project's Gruntfile, add a section named `version_sync` to the data obje
 ```js
 grunt.initConfig({
   version_sync: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
+    source: './package.json'
+    targets: ['./_config.yml','config/some_file.json']
   },
 });
 ```
 
 ### Options
 
-#### options.separator
+
+#### source
 Type: `String`
-Default value: `',  '`
 
-A string value that is used to do something with whatever.
+The filename to take the version from (i.e. the file you will keep up to date).
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
+#### target
+Type: `Array`
 
-A string value that is used to do something else with whatever else.
-
-### Usage Examples
-
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  version_sync: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  version_sync: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
-
-## Release History
-_(Nothing yet)_
+A list of files to keep up to date

@@ -54,7 +54,6 @@ module.exports = function (grunt) {
         var sourceData = parseFile(sourceFileName);
 
 
-        var targetFileName;
         var targetFileType;
         var targetData;
 
@@ -63,9 +62,8 @@ module.exports = function (grunt) {
         grunt.log.writeln('Using version number ' + version + ' from ' + sourceFileName);
 
         // Iterate over all specified file groups.
-        this.data.targets.forEach(function (f) {
-            targetFileName = f.src;
-            targetFileType = getType(f.src);
+        this.data.targets.forEach(function (targetFileName) {
+            targetFileType = getType(targetFileName);
             if(grunt.file.exists(targetFileName)) {
                 targetData = parseFile(targetFileName);
                 targetData.version = version;

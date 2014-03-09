@@ -16,7 +16,7 @@ module.exports = function(grunt) {
       all: [
         'Gruntfile.js',
         'tasks/*.js',
-        '<%= nodeunit.tests %>',
+        '<%= nodeunit.tests %>'
       ],
       options: {
         jshintrc: '.jshintrc'
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
           default: {
               files: [
                   // includes files within path
-                  {expand: true,flatten: true, src: ['test/orig_fixtures/*'], dest: 'test/fixtures'},
+                  {expand: true,flatten: true, src: ['test/orig_fixtures/*'], dest: 'test/fixtures'}
               ]
           }
       },
@@ -37,10 +37,7 @@ module.exports = function(grunt) {
     version_sync: {
       default_options: {
         source: 'test/fixtures/package.json',
-        targets: [
-            {   src: 'test/fixtures/_config.yml'
-            }
-        ]
+        targets: [ 'test/fixtures/_config.yml']
       }
     },
 
