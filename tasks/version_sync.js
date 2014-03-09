@@ -66,10 +66,15 @@ module.exports = function (grunt) {
             targetFileType = getType(targetFileName);
             if(grunt.file.exists(targetFileName)) {
                 targetData = parseFile(targetFileName);
-                targetData.version = version;
+                if (targetData.version !== version) {
+                    grunt.log.writeln('Updating ' + targetFileName + ' from ' + targetData.version + ' to ' + version);
+                    targetData.version = version;
+                    grunt.file.write(targetFileName, stringifyObject(targetData, targetFileType));
+                } else {
+                    grunt.log.writeln(targetFileName + ' already on version ' + version);
 
-                grunt.file.write(targetFileName, stringifyObject(targetData, targetFileType));
-                grunt.log.writeln('Updated ' + targetFileName);
+                }
+
 
             }
         });
