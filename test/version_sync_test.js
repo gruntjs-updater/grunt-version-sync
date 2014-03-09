@@ -27,7 +27,7 @@ exports.version_sync = {
     // setup here if necessary
     done();
   },
-  default_options: function(test) {
+    package_to_config: function(test) {
     test.equal(grunt.file.read('test/fixtures/_config.yml').indexOf('version: 0.9.1'), -1, 'config.yml should no longer have 0.9.1');
     console.log('NEW FILE', grunt.file.read('test/fixtures/_config.yml'));
       test.equal(grunt.file.read('test/fixtures/_config.yml').indexOf("version: 1.0.0"), 0, 'config.yml should now have version 1.0.0');

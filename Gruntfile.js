@@ -35,10 +35,14 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     version_sync: {
-      default_options: {
+      package_to_config: {
         source: 'test/fixtures/package.json',
         targets: [ 'test/fixtures/_config.yml']
-      }
+      },
+        config_to_package: {
+            source: 'test/fixtures/_config.yml',
+            targets: [ 'test/fixtures/package.json']
+        }
     },
 
     // Unit tests.

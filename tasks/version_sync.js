@@ -26,12 +26,11 @@ module.exports = function (grunt) {
 
     function parseFile(fileName) {
         var type = getType(fileName);
-        var sourceFileStr = grunt.file.read(fileName);
         var obj;
         if (type === 'json') {
-            obj = JSON.parse(sourceFileStr);
+            obj = grunt.file.readJSON(fileName);
         } else if (type === 'yml') {
-            obj = jsyaml.safeLoad(sourceFileStr);
+            obj = grunt.file.readYAML(fileName);
         }
         return obj;
     }
@@ -39,7 +38,7 @@ module.exports = function (grunt) {
     function stringifyObject(obj, type) {
         var stringified;
         if (type === 'json') {
-            stringified = JSON.stringify(obj);
+            stringified = JSON.stringify(obj, null, '\t');
         } else if (type === 'yml') {
             stringified = jsyaml.safeDump(obj);
         }
